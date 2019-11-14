@@ -1,0 +1,12 @@
+### Intellij
+**.iml
+.idea
+
+### NPM
+/node_modules
+
+dist/*
+!dist/js*
+!dist/vendor*
+
+templates.js
