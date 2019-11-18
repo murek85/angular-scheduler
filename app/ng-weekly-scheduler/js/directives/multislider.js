@@ -67,7 +67,6 @@ angular.module('weeklyScheduler')
 
         hoverElement.on('click', function (e) {
           if (!element.attr('no-add')) {
-            debugger
             var elOffX = element[0].getBoundingClientRect().left;
             var pixelOnClick = e.pageX - elOffX;
             var valOnClick = pixelToVal(pixelOnClick);
