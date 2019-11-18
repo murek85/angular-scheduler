@@ -69,6 +69,29 @@ angular.module('weeklyScheduler')
         // Get the schedule container element
         var el = element[0].querySelector(defaultOptions.selector);
 
+        function onPeriondChange(optionsDc) {
+          if (options) {
+            schedulerCtrl.config = config(schedulerCtrl.items.reduce(function (result, item) {
+              var schedules = item.schedules;
+
+              return result.concat(schedules && schedules.length ?
+                // If in multiSlider mode, ensure a schedule array is present on each item
+                // Else only use first element of schedule array
+                (options.monoSchedule ? item.schedules = [schedules[0]] : schedules) :
+                item.schedules = []
+              );
+            }, []), optionsDc);
+
+            // Then resize schedule area knowing the number of weeks in scope
+            el.firstChild.style.width = schedulerCtrl.config.nbWeeks / 53 * 200 + '%';
+
+            // Finally, run the sub directives listeners
+            schedulerCtrl.$modelChangeListeners.forEach(function (listener) {
+              listener(schedulerCtrl.config);
+            });
+          }
+        }
+
         function onModelChange(items) {
           // Check items are present
           if (items) {
@@ -124,6 +147,11 @@ angular.module('weeklyScheduler')
            * Watch the model items
            */
           scope.$watchCollection(attrs.items, onModelChange);
+
+          /**
+           * Watch the model options
+           */
+          scope.$watchCollection(attrs.options, onPeriondChange);
 
           /**
            * Listen to $locale change (brought by external module weeklySchedulerI18N)

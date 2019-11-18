@@ -11,8 +11,8 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
   .controller('DemoController', ['$scope', '$timeout', 'weeklySchedulerLocaleService', '$log',
     function ($scope, $timeout, localeService, $log) {
 
-      // localeService.set('pl-pl');
-      $scope.model = {
+      localeService.set('pl-pl');
+      $scope.scheduler = {
         locale: localeService.$locale.id,
         options: {
           /*monoSchedule: true*/
@@ -24,13 +24,7 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
           label: 'Budowa obwodnicy RE-2091',
           schedules: [
             { start: moment('2019-02-02').toDate(), end: moment('2019-09-30').toDate() },
-            { start: moment('2019-010-02').toDate(), end: moment('2019-11-30').toDate() }
-          ]
-        }, {
-          id: 2,
-          label: 'Budowa węzła A-323',
-          schedules: [
-            { start: moment('2019-02-02').toDate(), end: moment('2020-11-30').toDate() }
+            { start: moment('2019-10-02').toDate(), end: moment('2019-11-30').toDate() }
           ]
         }, {
           id: 3,
@@ -50,12 +44,30 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
       this.clickSchedule = function (itemIndex, scheduleIndex, scheduleValue) {
         $log.debug('The model has click!', itemIndex, scheduleIndex, scheduleValue);
 
-        alert($scope.model.items[itemIndex].label);
+        alert($scope.scheduler.items[itemIndex].label);
       };
 
+      this.refreshScheduler = function () {
+        $scope.scheduler = {
+          locale: localeService.$locale.id,
+          options: {
+            /*monoSchedule: true*/
+            minDate: moment('2020-01-01'),
+            maxDate: moment('2020-12-31')
+          },
+          items: [{
+            id: 2,
+            label: 'Budowa węzła A-323',
+            schedules: [
+              { start: moment('2020-02-02').toDate(), end: moment('2020-11-30').toDate() }
+            ]
+          }]
+        };
+      }
+
       this.onLocaleChange = function () {
-        $log.debug('The locale is changing to', $scope.model.locale);
-        localeService.set($scope.model.locale).then(function ($locale) {
+        $log.debug('The locale is changing to', $scope.scheduler.locale);
+        localeService.set($scope.scheduler.locale).then(function ($locale) {
           $log.debug('The locale changed to', $locale.id);
         });
       };

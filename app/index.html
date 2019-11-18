@@ -47,7 +47,7 @@
 
     <div>
       <label for="language">Choose your language:</label>
-      <select id="language" ng-model="model.locale" ng-change="demo.onLocaleChange()">
+      <select id="language" ng-model="scheduler.locale" ng-change="demo.onLocaleChange()">
         <option value="en-us">us</option>
         <option value="en-gb">gb</option>
         <option value="fr-fr">fr</option>
@@ -58,19 +58,20 @@
     </div>
 
     <div>
-      <code>$scope.model</code>
-      <pre ng-bind="model | json" style="max-height: 200px;"></pre>
+      <code>$scope.scheduler</code>
+      <pre ng-bind="scheduler | json" style="max-height: 200px;"></pre>
     </div>
 
     <weekly-scheduler class="scheduler"
-                      items="model.items"
+                      items="scheduler.items"
                       on-click="demo.clickSchedule"
-                      options="model.options">
-      <div class="srow">{{::$index + 1}}. {{item.label}}</div>
+                      options="scheduler.options">
+      <div class="srow">{{item.label}}</div>
     </weekly-scheduler>
 
     <div class="pull-right">
-      <button class="btn btn-success" role="button" ng-click="model.items.push({label: 'New Item'})">Add new item</button>
+      <button class="btn btn-success" role="button" ng-click="demo.refreshScheduler()">Refresh</button>
+      <button class="btn btn-success" role="button" ng-click="scheduler.items.push({label: 'New Item'})">Add new item</button>
     </div>
 
     <h2 id="run" class="page-header">2. Run @ Home</h2>
