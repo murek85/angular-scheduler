@@ -112,10 +112,10 @@ angular.module('weeklyScheduler')
           });
 
           schedulerCtrl.on = {
-            change: function (itemIndex, scheduleIndex, scheduleValue) {
-              var onChangeFunction = $parse(attrs.onChange)(scope);
-              if (angular.isFunction(onChangeFunction)) {
-                return onChangeFunction(itemIndex, scheduleIndex, scheduleValue);
+            click: function (itemIndex, scheduleIndex, scheduleValue) {
+              var onClickFunction = $parse(attrs.onClick)(scope);
+              if (angular.isFunction(onClickFunction)) {
+                return onClickFunction(itemIndex, scheduleIndex, scheduleValue);
               }
             }
           };

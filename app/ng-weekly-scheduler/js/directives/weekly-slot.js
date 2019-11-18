@@ -10,13 +10,7 @@ angular.module('weeklyScheduler')
         var conf = schedulerCtrl.config;
         var index = scope.$parent.$index;
         var containerEl = element.parent();
-        var resizeDirectionIsStart = true;
         var valuesOnDragStart = {start: scope.schedule.start, end: scope.schedule.end};
-
-        var pixelToVal = function (pixel) {
-          var percent = pixel / containerEl[0].clientWidth;
-          return Math.floor(percent * conf.nbWeeks + 0.5);
-        };
 
         var mergeOverlaps = function () {
           var schedule = scope.schedule;
@@ -47,120 +41,34 @@ angular.module('weeklyScheduler')
           });
         };
 
-        /**
-         * Delete on right click on slot
-         */
-        var deleteSelf = function () {
-          containerEl.removeClass('dragging');
-          containerEl.removeClass('slot-hover');
-          scope.item.schedules.splice(scope.item.schedules.indexOf(scope.schedule), 1);
-          containerEl.find('weekly-slot').remove();
-          scope.$apply();
-        };
-
-        element.find('span').on('click', function (e) {
-          e.preventDefault();
-          deleteSelf();
-        });
-
         element.on('mouseover', function () {
-          containerEl.addClass('slot-hover');
+          element.addClass('active'); containerEl.addClass('slot-hover');
+
         });
 
         element.on('mouseleave', function () {
-          containerEl.removeClass('slot-hover');
+          element.removeClass('active'); containerEl.removeClass('slot-hover');
         });
 
+        scope.clickSchedule = function () {
+          valuesOnDragStart = {start: ngModelCtrl.$viewValue.start, end: ngModelCtrl.$viewValue.end};
 
-        if (scope.item.editable !== false) {
-          scope.startResizeStart = function () {
-            resizeDirectionIsStart = true;
-            scope.startDrag();
-          };
-
-          scope.startResizeEnd = function () {
-            resizeDirectionIsStart = false;
-            scope.startDrag();
-          };
-
-          scope.startDrag = function () {
-            element.addClass('active');
-
-            containerEl.addClass('dragging');
-            containerEl.attr('no-add', true);
-
-            valuesOnDragStart = {start: ngModelCtrl.$viewValue.start, end: ngModelCtrl.$viewValue.end};
-          };
-
-          scope.endDrag = function () {
-
-            // this prevents user from accidentally
-            // adding new slot after resizing or dragging
-            setTimeout(function () {
-              containerEl.removeAttr('no-add');
-            }, 500);
-
-            element.removeClass('active');
-            containerEl.removeClass('dragging');
-
-            mergeOverlaps();
-            scope.$apply();
-          };
-
-          scope.resize = function (d) {
-            var ui = ngModelCtrl.$viewValue;
-            var delta = pixelToVal(d);
-
-            if (resizeDirectionIsStart) {
-              var newStart = Math.round(valuesOnDragStart.start + delta);
-
-              if (ui.start !== newStart && newStart <= ui.end - 1 && newStart >= 0) {
-                ngModelCtrl.$setViewValue({
-                  start: newStart,
-                  end: ui.end
-                });
-                ngModelCtrl.$render();
-              }
-            } else {
-              var newEnd = Math.round(valuesOnDragStart.end + delta);
-
-              if (ui.end !== newEnd && newEnd >= ui.start + 1 && newEnd <= conf.nbWeeks) {
-                ngModelCtrl.$setViewValue({
-                  start: ui.start,
-                  end: newEnd
-                });
-                ngModelCtrl.$render();
-              }
-            }
-          };
-
-          scope.drag = function (d) {
-            var ui = ngModelCtrl.$viewValue;
-            var delta = pixelToVal(d);
-            var duration = valuesOnDragStart.end - valuesOnDragStart.start;
-
-            var newStart = Math.round(valuesOnDragStart.start + delta);
-            var newEnd = Math.round(newStart + duration);
-
-            if (ui.start !== newStart && newStart >= 0 && newEnd <= conf.nbWeeks) {
-              ngModelCtrl.$setViewValue({
-                start: newStart,
-                end: newEnd
-              });
-              ngModelCtrl.$render();
-            }
-          };
-        }
+          ngModelCtrl.$setViewValue({
+            start: valuesOnDragStart.start,
+            end: valuesOnDragStart.end
+          });
+          ngModelCtrl.$render();
+        };
 
         // on init, merge overlaps
         mergeOverlaps(true);
 
         //// UI -> model ////////////////////////////////////
-        ngModelCtrl.$parsers.push(function onUIChange(ui) {
+        ngModelCtrl.$parsers.push(function onUIClick(ui) {
           ngModelCtrl.$modelValue.start = timeService.addWeek(conf.minDate, ui.start).toDate();
           ngModelCtrl.$modelValue.end = timeService.addWeek(conf.minDate, ui.end).toDate();
-          //$log.debug('PARSER :', ngModelCtrl.$modelValue.$$hashKey, index, scope.$index, ngModelCtrl.$modelValue);
-          schedulerCtrl.on.change(index, scope.$index, ngModelCtrl.$modelValue);
+          //$log.debug('PARSER :', ngModelCtrl.$modelValue.$$hashKey, ngModelCtrl.$modelValue);
+          schedulerCtrl.on.click(index, scope.$index, ngModelCtrl.$modelValue);
           return ngModelCtrl.$modelValue;
         });
 

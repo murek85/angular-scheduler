@@ -1,6 +1,5 @@
-<div title="{{schedule.start | date}} - {{schedule.end | date}}">
-  <div class="handle left" ondrag="resize" ondragstart="startResizeStart" ondragstop="endDrag" handle></div>
-  <div ondrag="drag" ondragstart="startDrag" ondragstop="endDrag" handle>{{schedule.start | date}} - {{schedule.end | date}}</div>
-  <div class="handle right" ondrag="resize" ondragstart="startResizeEnd" ondragstop="endDrag" handle></div>
-  <div class="remove"><span class="glyphicon glyphicon-remove"></span></div>
+<div ng-click="clickSchedule()" title="{{schedule.start | date}} - {{schedule.end | date}}">
+  <div class="handle left" handle></div>
+  <div handle>{{schedule.start | date}} - {{schedule.end | date}}</div>
+  <div class="handle right" handle></div>
 </div>

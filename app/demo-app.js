@@ -20,34 +20,37 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
           maxDate: moment('2019-12-31')
         },
         items: [{
+          id: 1,
           label: 'Budowa obwodnicy RE-2091',
-          editable: false,
           schedules: [
-            { start: moment('2019-02-02').toDate(), end: moment('2019-11-30').toDate() }
+            { start: moment('2019-02-02').toDate(), end: moment('2019-09-30').toDate() },
+            { start: moment('2019-010-02').toDate(), end: moment('2019-11-30').toDate() }
           ]
         }, {
+          id: 2,
           label: 'Budowa węzła A-323',
-          editable: false,
           schedules: [
             { start: moment('2019-02-02').toDate(), end: moment('2020-11-30').toDate() }
           ]
         }, {
+          id: 3,
           label: 'Budowa węzła C-11',
-          editable: false,
           schedules: [
             { start: moment('2019-01-10').toDate(), end: moment('2019-08-15').toDate() }
           ]
         }, {
+          id: 4,
           label: 'Budowa węzła B-23',
-          editable: false,
           schedules: [
             { start: moment('2019-04-09').toDate(), end: moment('2019-09-02').toDate() }
           ]
         }]
       };
 
-      this.doSomething = function (itemIndex, scheduleIndex, scheduleValue) {
-        $log.debug('The model has changed!', itemIndex, scheduleIndex, scheduleValue);
+      this.clickSchedule = function (itemIndex, scheduleIndex, scheduleValue) {
+        $log.debug('The model has click!', itemIndex, scheduleIndex, scheduleValue);
+
+        alert($scope.model.items[itemIndex].label);
       };
 
       this.onLocaleChange = function () {

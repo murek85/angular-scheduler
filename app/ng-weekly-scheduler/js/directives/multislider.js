@@ -34,6 +34,7 @@ angular.module('weeklyScheduler')
         };
 
         var addSlot = function (start, end) {
+
           start = start >= 0 ? start : 0;
           end = end <= conf.nbWeeks ? end : conf.nbWeeks;
 
@@ -64,10 +65,11 @@ angular.module('weeklyScheduler')
           });
         });
 
-        hoverElement.on('click', function (event) {
+        hoverElement.on('click', function (e) {
           if (!element.attr('no-add')) {
+            debugger
             var elOffX = element[0].getBoundingClientRect().left;
-            var pixelOnClick = event.pageX - elOffX;
+            var pixelOnClick = e.pageX - elOffX;
             var valOnClick = pixelToVal(pixelOnClick);
 
             var start = Math.round(valOnClick - defaultNewScheduleSize / 2);

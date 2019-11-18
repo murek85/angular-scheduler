@@ -81,12 +81,12 @@ multi-slider.dragging .ghost {
 }
 multi-slider weekly-slot {
   -webkit-transition: background 0.1s ease-in;
-  cursor: all-scroll;
+  cursor: pointer;
   min-width: 10px !important;
   background: #4eb8d5;
 }
 multi-slider weekly-slot.disable {
-  cursor: not-allowed;
+  cursor: pointer;
   color: #666;
   /* background: #c0c0c0; */
 }
@@ -98,14 +98,14 @@ multi-slider weekly-slot .handle {
 multi-slider weekly-slot .handle.left, multi-slider weekly-slot .handle.right {
   width: 10px;
   background: #000;
-  cursor: col-resize;
+  /* cursor: col-resize; */
   opacity: 0.1;
 }
 multi-slider weekly-slot.disable .handle {
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 multi-slider weekly-slot .handle.left:hover, multi-slider weekly-slot .handle.right:hover {
-  opacity: 0.3;
+  /* opacity: 0.3; */
 }
 multi-slider weekly-slot .handle.left {
   left: 0;
