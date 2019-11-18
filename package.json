@@ -1,8 +1,8 @@
 {
-  "name": "angular-scheduler",
+  "name": "angularjs-scheduler",
   "version": "0.0.7",
   "description": "A scheduler using weeks for AngularJS",
-  "repository": "https://github.com/fmaturel/angular-scheduler",
+  "repository": "https://github.com/murek85/angularjs-scheduler",
   "license": "MIT",
   "author": "murek85",
   "dependencies": {

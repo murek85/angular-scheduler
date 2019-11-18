@@ -1,14 +1,12 @@
-# angular-scheduler
+# angularjs-scheduler
 A weekly scheduler for angularjs
-
-[![Build Status](https://secure.travis-ci.org/murek85/angular-scheduler.svg)](http:/travis-ci.org/murek85/angular-scheduler)
 
 
 ## Run @ Home
 Run the demo @home with few steps (prerequisite git & node V0.10+ & npm installed):
 
 ```
- git clone https://github.com/murek85/angular-scheduler.git && cd angular-scheduler
+ git clone https://github.com/murek85/angularjs-scheduler.git && cd angular-scheduler
  npm install
  npm install -g grunt-cli
 ```
@@ -35,7 +33,7 @@ The `angular-locale_xx-xx.js` file is your locale file
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.js"></script>
   
   <!-- The library to replace with your local copy of ng-weekly-scheduler -->
-  <script src="https://github.com/murek85/angular-scheduler/blob/master/dist/js/ng-weekly-scheduler.js"></script>
+  <script src="https://github.com/murek85/angularjs-scheduler/blob/master/dist/js/ng-weekly-scheduler.js"></script>
 ```
 
 Add dependency to timeline your angular module: `weeklyScheduler`.
@@ -139,4 +137,4 @@ You should see your scheduler items fading in!
 
 Released under the MIT License. See the [LICENSE][license] file for further details.
 
-[license]: https://github.com/murek85/angular-scheduler/blob/master/LICENSE
+[license]: https://github.com/murek85/angularjs-scheduler/blob/master/LICENSE
