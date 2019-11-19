@@ -17,7 +17,11 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
         options: {
           /*monoSchedule: true*/
           minDate: moment('2019-01-01'),
-          maxDate: moment('2019-12-31')
+          maxDate: moment('2019-12-31'),
+          labels: {
+            month: 'Miesiąc',
+            weekNb: 'Tydzień'
+          }
         },
         items: [{
           id: 1,
@@ -53,7 +57,11 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
           options: {
             /*monoSchedule: true*/
             minDate: moment('2020-01-01'),
-            maxDate: moment('2020-12-31')
+            maxDate: moment('2020-12-31'),
+            labels: {
+              month: 'Miesiąc',
+              weekNb: 'Tydzień'
+            }
           },
           items: [{
             id: 2,
@@ -63,7 +71,7 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
             ]
           }]
         };
-      }
+      };
 
       this.onLocaleChange = function () {
         $log.debug('The locale is changing to', $scope.scheduler.locale);
