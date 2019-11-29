@@ -1,6 +1,7 @@
 /*---------------------------------------------------------------- Scheduler */
 .scheduler {
-  display: block;
+  width: 100%;
+  display: inline-flex;
   background: #fff;
   border: 1px solid #ccc;
   margin-bottom: 10px;
@@ -10,22 +11,31 @@
   display: block;
   clear: both;
 }
-.scheduler .labels, .scheduler .schedule-area-container {
+.scheduler .labels-area-container {
   display: block;
   float: left;
 }
-.scheduler .labels {
-  width: 15%;
-  color: #666;
-  border-right: 1px solid #ddd;
+.scheduler .schedule-area-container {
+  display: block;
+  float: left;
 }
-.scheduler .labels .srow {
+.scheduler .labels-area-container {
+  width: 25%;
+  overflow-x: scroll;
+}
+.scheduler .labels-area-container .srow {
   padding: 0 5px;
   border-bottom: 1px solid #ddd;
 }
 .scheduler .schedule-area-container {
+  width: 75%;
   overflow-x: scroll;
-  width: 85%;
+}
+.scheduler .label-area {
+  color: #666;
+  border-right: 1px solid #ddd;
+  white-space: nowrap;
+  width: 100vh;
 }
 .scheduler .srow {
   position: relative;
@@ -158,9 +168,6 @@ multi-slider weekly-slot.active {
 .grid-container.striped div:nth-child(even) {
   background: #fafafa;
 }
-.github-fork-ribbon:after {
-  line-height: 1em;
-}
 /*--------------------------------------------------------------- Animations */
 .schedule-animate {
   transition: opacity 200ms ease-out;
@@ -171,4 +178,8 @@ multi-slider weekly-slot.active {
 .schedule-animate.ng-leave, .schedule-animate.ng-hide-add {
   display: none;
   opacity: 1;
+}
+/*--------------------------------------------------------------- Others */
+.text {
+  color: red;
 }

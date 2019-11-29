@@ -25,7 +25,7 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
         },
         items: [{
           id: 1,
-          label: 'Budowa obwodnicy RE-2091',
+          label: 'Budowa obwodnicy RE-2091 AAAA AAAAAA AAAAAAAAA AAAAA AAAA',
           schedules: [
             { start: moment('2019-02-02').toDate(), end: moment('2019-09-30').toDate() },
             { start: moment('2019-10-02').toDate(), end: moment('2019-11-30').toDate() }
