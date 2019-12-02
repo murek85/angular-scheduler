@@ -21,7 +21,7 @@
 }
 .scheduler .labels-area-container {
   width: 25%;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 .scheduler .labels-area-container .srow {
   padding: 0 5px;

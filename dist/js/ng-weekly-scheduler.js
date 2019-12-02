@@ -729,6 +729,6 @@ angular.module('ng-weekly-scheduler/views/weekly-scheduler.html', []).run(['$tem
 
 angular.module('ng-weekly-scheduler/views/weekly-slot.html', []).run(['$templateCache', function($templateCache) {
   $templateCache.put('ng-weekly-scheduler/views/weekly-slot.html',
-    '<div ng-click=clickSchedule() title="{{schedule.start | date}} - {{schedule.end | date}}"><div class="handle left" handle></div><div handle>{{schedule.start | date}} - {{schedule.end | date}}</div><div class="handle right" handle></div></div>');
+    '<div ng-click=clickSchedule() title="{{schedule.start | date}} - {{schedule.end | date}}"><div class="handle left" handle></div><div handle></div><div class="handle right" handle></div></div>');
 }]);
 }( window ));
