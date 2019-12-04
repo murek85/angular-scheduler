@@ -120,6 +120,9 @@ multi-slider weekly-slot .handle.left:hover, multi-slider weekly-slot .handle.ri
 multi-slider weekly-slot .handle.left {
   left: 0;
 }
+multi-slider weekly-slot .handle.center {
+  width: 100vh;
+}
 multi-slider weekly-slot .handle.right {
   right: 0;
 }
