@@ -351,8 +351,9 @@ angular.module('weeklyScheduler')
       var nbWeeks = timeService.weekDiff(minDate, maxDate);
 
       var result = angular.extend(options, {minDate: minDate, maxDate: maxDate, nbWeeks: nbWeeks});
-      // Log configuration
-      $log.debug('Weekly Scheduler configuration:', result);
+
+      // // Log configuration
+      // $log.debug('Weekly Scheduler configuration:', result);
 
       return result;
     }
