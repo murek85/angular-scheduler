@@ -45,7 +45,7 @@ angular.module('weeklyScheduler')
         var dayDiff = endDate.diff(startDate, DAY);
 
         //var total = 0, totalDays = 0;
-        console.log(startDate.toDate(), endDate.toDate(), monthDiff, dayDiff);
+        // console.log(startDate.toDate(), endDate.toDate(), monthDiff, dayDiff);
         for (i = 0; i < monthDiff; i++) {
           var startOfMonth = i === 0 ? startDate : startDate.add(1, MONTH).startOf(MONTH);
           var endOfMonth = i === monthDiff - 1 ? endDate : startDate.clone().endOf(MONTH);

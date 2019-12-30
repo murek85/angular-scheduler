@@ -74,9 +74,9 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
       };
 
       this.onLocaleChange = function () {
-        $log.debug('The locale is changing to', $scope.scheduler.locale);
+        // $log.debug('The locale is changing to', $scope.scheduler.locale);
         localeService.set($scope.scheduler.locale).then(function ($locale) {
-          $log.debug('The locale changed to', $locale.id);
+          // $log.debug('The locale changed to', $locale.id);
         });
       };
     }]);
