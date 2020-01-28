@@ -1,4 +1,4 @@
-angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'])
+angular.module('demoApp', ['ui.bootstrap', 'ui.bootstrap.popover', 'ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'])
 
   .config(['weeklySchedulerLocaleServiceProvider', function (localeServiceProvider) {
     localeServiceProvider.configure({
@@ -26,6 +26,7 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
         items: [{
           id: 1,
           label: 'Budowa obwodnicy RE-2091 AAAA AAAAAA AAAAAAAAA AAAAA AAAA',
+          color: 'rgba(244,67,54,1)',
           schedules: [
             { start: moment('2019-02-02').toDate(), end: moment('2019-09-30').toDate() },
             { start: moment('2019-10-02').toDate(), end: moment('2019-11-30').toDate() }
@@ -33,12 +34,14 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
         }, {
           id: 3,
           label: 'Budowa węzła C-11',
+          color: 'rgba(244,67,54,1)',
           schedules: [
             { start: moment('2019-01-10').toDate(), end: moment('2019-08-15').toDate() }
           ]
         }, {
           id: 4,
           label: 'Budowa węzła B-23',
+          color: 'rgba(244,67,54,1)',
           schedules: [
             { start: moment('2019-04-09').toDate(), end: moment('2019-09-02').toDate() }
           ]
@@ -66,6 +69,7 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
           items: [{
             id: 2,
             label: 'Budowa węzła A-323',
+            color: 'rgba(244,67,54,1)',
             schedules: [
               { start: moment('2020-02-02').toDate(), end: moment('2020-11-30').toDate() }
             ]
@@ -76,7 +80,7 @@ angular.module('demoApp', ['ngAnimate', 'weeklyScheduler', 'weeklySchedulerI18N'
       this.onLocaleChange = function () {
         // $log.debug('The locale is changing to', $scope.scheduler.locale);
         localeService.set($scope.scheduler.locale).then(function ($locale) {
-          // $log.debug('The locale changed to', $locale.id);
+          $log.debug('The locale changed to', $locale.id);
         });
       };
     }]);

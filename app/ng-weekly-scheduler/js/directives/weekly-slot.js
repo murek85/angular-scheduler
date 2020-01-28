@@ -10,12 +10,18 @@ angular.module('weeklyScheduler')
         var conf = schedulerCtrl.config;
         var index = scope.$parent.$index;
         var containerEl = element.parent();
-        var valuesOnDragStart = {start: scope.schedule.start, end: scope.schedule.end};
+        var valuesOnDragStart = {
+          start: scope.schedule.start,
+          end: scope.schedule.end,
+          color: scope.item.color
+        };
 
         var mergeOverlaps = function () {
           var schedule = scope.schedule;
+          schedule.color = scope.item.color;
           var schedules = scope.item.schedules;
           schedules.forEach(function (el) {
+            
             if (el !== schedule) {
               // model is inside another slot
               if (el.end >= schedule.end && el.start <= schedule.start) {
@@ -51,11 +57,17 @@ angular.module('weeklyScheduler')
         });
 
         scope.clickSchedule = function () {
-          valuesOnDragStart = {start: ngModelCtrl.$viewValue.start, end: ngModelCtrl.$viewValue.end};
+
+          valuesOnDragStart = {
+            start: ngModelCtrl.$viewValue.start,
+            end: ngModelCtrl.$viewValue.end,
+            color: ngModelCtrl.$viewValue.color
+          };
 
           ngModelCtrl.$setViewValue({
             start: valuesOnDragStart.start,
-            end: valuesOnDragStart.end
+            end: valuesOnDragStart.end,
+            color: valuesOnDragStart.color
           });
           ngModelCtrl.$render();
         };
@@ -65,28 +77,34 @@ angular.module('weeklyScheduler')
 
         //// UI -> model ////////////////////////////////////
         ngModelCtrl.$parsers.push(function onUIClick(ui) {
+
           ngModelCtrl.$modelValue.start = timeService.addWeek(conf.minDate, ui.start).toDate();
           ngModelCtrl.$modelValue.end = timeService.addWeek(conf.minDate, ui.end).toDate();
-          //$log.debug('PARSER :', ngModelCtrl.$modelValue.$$hashKey, ngModelCtrl.$modelValue);
+          ngModelCtrl.$modelValue.color = ui.color;
+          // $log.debug('PARSER :', ngModelCtrl.$modelValue.$$hashKey, ngModelCtrl.$modelValue);
           schedulerCtrl.on.click(index, scope.$index, ngModelCtrl.$modelValue);
           return ngModelCtrl.$modelValue;
         });
 
         //// model -> UI ////////////////////////////////////
         ngModelCtrl.$formatters.push(function onModelChange(model) {
+
           var ui = {
             start: timeService.weekPreciseDiff(conf.minDate, moment(model.start), true),
-            end: timeService.weekPreciseDiff(conf.minDate, moment(model.end), true)
+            end: timeService.weekPreciseDiff(conf.minDate, moment(model.end), true),
+            color: model.color
           };
           //$log.debug('FORMATTER :', index, scope.$index, ui);
           return ui;
         });
 
         ngModelCtrl.$render = function () {
+
           var ui = ngModelCtrl.$viewValue;
           var css = {
             left: ui.start / conf.nbWeeks * 100 + '%',
-            width: (ui.end - ui.start) / conf.nbWeeks * 100 + '%'
+            width: (ui.end - ui.start) / conf.nbWeeks * 100 + '%',
+            background: ui.color
           };
 
           //$log.debug('RENDER :', index, scope.$index, css);

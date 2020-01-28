@@ -107,6 +107,7 @@ angular.module('weeklyScheduler')
 
             // First calculate configuration
             schedulerCtrl.config = config(items.reduce(function (result, item) {
+
               var schedules = item.schedules;
 
               return result.concat(schedules && schedules.length ?

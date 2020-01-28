@@ -67,7 +67,7 @@ multi-slider .slot {
   position: absolute;
   top: 5px;
   bottom: 5px;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   padding-left: 20px;
   text-align: left;
   white-space: nowrap;
@@ -75,7 +75,7 @@ multi-slider .slot {
   color: #fff;
 }
 multi-slider .ghost {
-  background: #5ab57a;
+  /* background: #5ab57a; */
   opacity: 0.6;
   display: none;
   cursor: pointer;
@@ -93,7 +93,7 @@ multi-slider weekly-slot {
   -webkit-transition: background 0.1s ease-in;
   cursor: pointer;
   min-width: 10px !important;
-  background: #4eb8d5;
+  /* background: #4eb8d5; */
 }
 multi-slider weekly-slot.disable {
   cursor: pointer;
@@ -106,7 +106,7 @@ multi-slider weekly-slot .handle {
   bottom: 0;
 }
 multi-slider weekly-slot .handle.left, multi-slider weekly-slot .handle.right {
-  width: 10px;
+  width: 5px;
   background: #000;
   /* cursor: col-resize; */
   opacity: 0.1;
@@ -121,7 +121,7 @@ multi-slider weekly-slot .handle.left {
   left: 0;
 }
 multi-slider weekly-slot .handle.center {
-  width: 100vh;
+  width: 100%;
 }
 multi-slider weekly-slot .handle.right {
   right: 0;
@@ -152,7 +152,7 @@ multi-slider weekly-slot .remove:hover {
 }
 multi-slider weekly-slot.active {
   z-index: 10;
-  background: #5ab57a;
+  /* background: #5ab57a; */
   color: #fff;
 }
 .grid-container {

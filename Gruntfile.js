@@ -171,6 +171,7 @@
               'angular-i18n/angular-locale_es-es.js',
               'angular-i18n/angular-locale_pl-pl.js',
               'angular-dynamic-locale/dist/tmhDynamicLocale.js',
+              'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
               'moment/moment.js'],
             dest: '<%= yeoman.dist %>/vendor'
           }]

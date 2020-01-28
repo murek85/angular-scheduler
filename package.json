@@ -1,6 +1,6 @@
 {
   "name": "angularjs-scheduler",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A scheduler using weeks for AngularJS",
   "repository": "https://github.com/murek85/angularjs-scheduler",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "angular-animate": "~1.6.9",
     "angular-dynamic-locale": "^0.1.32",
     "angular-i18n": "~1.6.9",
+    "angular-ui-bootstrap": "2.5.6",
     "moment": "~2.21"
   },
   "devDependencies": {
