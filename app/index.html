@@ -38,6 +38,23 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<script id="customSlotPopoverTemplate.html" type="text/ng-template">
+  <div class="container-fluid">
+    <div class="row">
+      <blockquote ng-style="{borderColor: item.color}" style="margin: 0 0 10px; padding: 0 10px 5px;">
+        <p style="font-size: 85%;">{{item.label}}</p>
+        <footer>
+          <span>{{schedule.start | date}} - {{schedule.end | date}}</span>
+        </footer>
+      </blockquote>
+    </div>
+
+    <footer *ng-if="item.contractDescription" class="row">
+      <span>{{item.contractDescription}}</span>
+    </footer>
+  </div>
+</script>
+
 <div class="row" ng-controller="DemoController as demo">
   <div class="col-xs-10 col-xs-offset-1">
 

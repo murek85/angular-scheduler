@@ -534,7 +534,6 @@ angular.module('weeklyScheduler')
 
         element.on('mouseover', function () {
           element.addClass('active'); containerEl.addClass('slot-hover');
-
         });
 
         element.on('mouseleave', function () {
@@ -749,6 +748,6 @@ angular.module('ng-weekly-scheduler/views/weekly-scheduler.html', []).run(['$tem
 
 angular.module('ng-weekly-scheduler/views/weekly-slot.html', []).run(['$templateCache', function($templateCache) {
   $templateCache.put('ng-weekly-scheduler/views/weekly-slot.html',
-    '<div ng-click=clickSchedule() uib-popover-template="\'customSlotPopoverTemplate.html\'" popover-append-to-body=true popover-trigger="\'mouseenter\'" popover-placement=top-left popover-animation=false popover-class=increase-slot-popover-width method=item.methodCalled(item)><div class="handle left" handle></div><div class="handle center" handle></div><div class="handle right" handle></div></div>');
+    '<div ng-click=clickSchedule() uib-popover-template="\'customSlotPopoverTemplate.html\'" popover-append-to-body=true popover-trigger="\'mouseenter\'" popover-placement="auto top-left" popover-animation=false popover-class=increase-slot-popover-width method=item.methodCalled(item)><div class="handle left" handle></div><div class="handle center" handle></div><div class="handle right" handle></div></div>');
 }]);
 }( window ));

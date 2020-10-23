@@ -26,6 +26,7 @@ angular.module('demoApp', ['ui.bootstrap', 'ui.bootstrap.popover', 'ngAnimate', 
         items: [{
           id: 1,
           label: 'Budowa obwodnicy RE-2091 AAAA AAAAAA AAAAAAAAA AAAAA AAAA',
+          contractDescription: 'Budowa obwodnicy RE-2091 AAAA AAAAAA AAAAAAAAA AAAAA AAAA',
           color: 'rgba(244,67,54,1)',
           schedules: [
             { start: moment('2019-02-02').toDate(), end: moment('2019-09-30').toDate() },
@@ -34,6 +35,7 @@ angular.module('demoApp', ['ui.bootstrap', 'ui.bootstrap.popover', 'ngAnimate', 
         }, {
           id: 3,
           label: 'Budowa węzła C-11',
+          contractDescription: 'Budowa obwodnicy RE-2091 AAAA AAAAAA AAAAAAAAA AAAAA AAAA',
           color: 'rgba(244,67,54,1)',
           schedules: [
             { start: moment('2019-01-10').toDate(), end: moment('2019-08-15').toDate() }
@@ -41,6 +43,7 @@ angular.module('demoApp', ['ui.bootstrap', 'ui.bootstrap.popover', 'ngAnimate', 
         }, {
           id: 4,
           label: 'Budowa węzła B-23',
+          contractDescription: 'Budowa obwodnicy RE-2091 AAAA AAAAAA AAAAAAAAA AAAAA AAAA',
           color: 'rgba(244,67,54,1)',
           schedules: [
             { start: moment('2019-04-09').toDate(), end: moment('2019-09-02').toDate() }
@@ -51,7 +54,7 @@ angular.module('demoApp', ['ui.bootstrap', 'ui.bootstrap.popover', 'ngAnimate', 
       this.clickSchedule = function (itemIndex, scheduleIndex, scheduleValue) {
         $log.debug('The model has click!', itemIndex, scheduleIndex, scheduleValue);
 
-        alert($scope.scheduler.items[itemIndex].label);
+        // alert($scope.scheduler.items[itemIndex].label);
       };
 
       this.refreshScheduler = function () {

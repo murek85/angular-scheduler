@@ -49,7 +49,6 @@ angular.module('weeklyScheduler')
 
         element.on('mouseover', function () {
           element.addClass('active'); containerEl.addClass('slot-hover');
-
         });
 
         element.on('mouseleave', function () {
